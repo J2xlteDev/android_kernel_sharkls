@@ -11,4 +11,3 @@ config GSP_THREE_OVERLAY
 	# default m
 	help
   Support GSP for SPRD
-

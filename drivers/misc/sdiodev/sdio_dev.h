@@ -123,10 +123,7 @@ struct sdio_data {
 #define SDIO_CHN_15	0x80
 
 #define SDIOLOG_CHN  14
-/*
 #define SDIO_SYNC_CHN 10
-*/
-#define FM_CHANNEL_READ	10
 #define DOWNLOAD_CHANNEL_READ	12
 #define PSEUDO_ATC_CHANNEL_READ	11
 #define PSEUDO_ATC_CHANNEL_LOOPCHECK         (15)
