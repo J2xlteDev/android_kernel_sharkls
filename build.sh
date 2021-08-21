@@ -1,6 +1,4 @@
 #!/bin/bash
-
-user=$(whoami)
 cd src/
 
 # Exports
@@ -8,8 +6,7 @@ export CROSS_COMPILE="$PWD/../toolchain/bin/arm-eabi-"
 export ARCH=arm
 
 # Cleaning
-make clean
-make mrproper
+make clean && make mrproper
 
 # Compiling
 make j2xlte_defconfig
