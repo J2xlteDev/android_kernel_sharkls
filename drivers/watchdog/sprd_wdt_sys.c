@@ -64,6 +64,11 @@ static unsigned long wdt_enabled;
 #define wdt_feed_all() FEED_ALL_WDG(chip_margin, ap_margin, apcore_margin, apcore_irq_margin)
 
 extern int in_calibration(void);
+
+#ifdef CONFIG_SEC_DEBUG
+#include <soc/sprd/sec_debug.h>
+#endif
+
 #ifndef CONFIG_SPRD_WATCHDOG_SYS_FIQ
 static irqreturn_t sprd_wdg_isr(int irq, void *dev_id)
 {
@@ -440,19 +445,12 @@ static int sprd_wdt_probe(struct platform_device *pdev)
 	}
 #else
 	ret = fiq_glue_register_handler(&sprd_wdg_fiq_glue_handler);
-<<<<<<< HEAD
 	if (ret == 0) {
 		disable_fiq(irq_num);
  		enable_fiq(irq_num);
 	} else {
  		pr_err("<%s> fiq_glue_register_handler failed %d!\n", __func__, ret);
 	}
-=======
-	if (ret == 0)
-		enable_fiq(irq_num);
-	else
-		pr_err("<%s> fiq_glue_register_handler failed %d!\n", __func__, ret);
->>>>>>> 9cb08fd4... fix wifi
 #endif
 
 	sci_wdt_kfeeder_init();
